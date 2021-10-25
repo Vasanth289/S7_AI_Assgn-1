@@ -26,8 +26,8 @@ class VacuumBot(Environment):
         if self.currentPos == newPos:
             pass
         
-        if self.locationCondtion[newPos] == 0:
-            self.score += 1
+        # if self.locationCondtion[newPos] == 0:
+        #     self.score += 1
         
         self.currentPos = newPos
 
@@ -39,6 +39,7 @@ class VacuumBot(Environment):
             if self.locationCondtion[self.currentPos] == 1:
                 self.suck()
             else:
+                self.score += 1
                 self.move()
             
             moves += 1
