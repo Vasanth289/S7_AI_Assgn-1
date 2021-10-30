@@ -1,5 +1,3 @@
-import random
-
 class Environment:
 
     def __init__(self, environment):
@@ -20,16 +18,11 @@ class VacuumBot(Environment):
     def suck(self):
         self.locationCondtion[self.currentPos] = 0
 
-    def move(self):
-        newPos = random.randint(0, 1)
+    def left(self):
+        self.currentPos = 0
 
-        if self.currentPos == newPos:
-            pass
-        
-        # if self.locationCondtion[newPos] == 0:
-        #     self.score += 1
-        
-        self.currentPos = newPos
+    def right(self):
+        self.currentPos = 1
 
     def runSimulation(self):
         print(super().__str__())
@@ -40,7 +33,10 @@ class VacuumBot(Environment):
                 self.suck()
             else:
                 self.score += 1
-                self.move()
+                if self.currentPos == 0:
+                    self.right()
+                elif self.currentPos == 1:
+                    self.left()
             
             moves += 1
     
@@ -57,4 +53,9 @@ def main():
                 print(bot)
 
 if __name__ == '__main__':
+    print('\nVacuum Bot\n')
+    print('Details are mentioned in README.pdf\n')
+    print(30*'=')
+    print()
+
     main()
